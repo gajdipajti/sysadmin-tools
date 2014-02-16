@@ -1,0 +1,19 @@
+#!/bin/sh
+# 	Summary:	An incremental backup script for a cronjob
+#	Version:	0.1.1 [2014-02-15]
+#	Package:	sysadmin-tools
+#	License:	http://creativecommons.org/licenses/by-sa/3.0/
+#	Developer:	tgajdos
+#	Name:		Gajdos Tamás
+#	Company:	Department of Physics, University of Szeged
+#	Contact info:	gajdos.tamas@stud.u-szeged.hu
+#	Changelog:	0.1 Just added to the new 14.04 system
+#	Known limits:	
+#	Runtime:
+SRCD="/etc/"
+TGTD="/srv/backup/etc/"
+DAY=$(date +%Y%m%d)
+MONTH=$(date +%Y%m)
+BCKP=etc-$DAY.tar.gz
+LOG=log-$MONTH.log
+tar -g $TGTD$LOG -cpzf $TGTD$BCKP $SRCD

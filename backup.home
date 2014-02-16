@@ -1,0 +1,20 @@
+#!/bin/sh
+# 	Summary:	An incremental backup script for a cronjob
+#	Version:	0.1.1 [2014-02-15]
+#	Package:	sysadmin-tools
+#	License:	http://creativecommons.org/licenses/by-sa/3.0/
+#	Developer:	tgajdos
+#	Name:		Gajdos Tamás
+#	Company:	Department of Physics, University of Szeged
+#	Contact info:	gajdos.tamas@stud.u-szeged.hu
+#	Changelog:	0.1 Added exclude
+#	Known limits:	Only one exclude
+#	Runtime:
+SRCD="/home/"
+TGTD="/srv/backup/home/"
+EXCL="/home/gajdost/VirtualBox*"
+DAY=$(date +%Y%m%d)
+MONTH=$(date +%Y%m)
+BCKP=home-$DAY.tar.gz
+LOG=home-$MONTH.log
+tar -g $TGTD$LOG -cpzf $TGTD$BCKP --exclude=$EXCL $SRCD
